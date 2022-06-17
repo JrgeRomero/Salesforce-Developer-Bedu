@@ -1,0 +1,20 @@
+<apex:page standardController="Quote" extensions="InventarioViewController">
+    <apex:pageBlock>
+        <apex:form>
+            <apex:outputLabel value="Codigo" />
+            <apex:inputText value="{!codigo}" label="Codigo del producto" />
+            <apex:commandButton value="Buscar" action={!buscar}/>
+            <apex:commandButton value="limpiar" action="{!limpiar}" />
+            <apex:pageBlock title="Productos en inventario">
+                <apex:pageBlockTable value="{!inv.Codigoprod__c}" />
+                <apex:column value="!inv.CodigoProd__c" />
+                <apex:column value="!inv.Cantidad_dis__c" />
+                <apex:column value="!inv.Cantidad_apart__c" />
+            </apex:pageBlock>
+        </apex:form>
+    </apex:pageBlock>
+    <!-- Begin Default Content REMOVE THIS -->
+    <h1>Congratulations</h1>
+    This is your new Page
+    <!-- End Default Content REMOVE THIS -->
+</apex:page>
