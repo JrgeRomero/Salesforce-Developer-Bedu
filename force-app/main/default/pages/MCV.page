@@ -1,0 +1,28 @@
+<apex:page standardController="Inventario__c" renderAs="pdf" >
+    <apex:sectionHeader title="" subtitle="mi primer pagina en visual force page"/>
+    <apex:form >
+    	<apex:pageBlock >
+        	<apex:outputPanel >
+                La clase de SalesForce developer es la mejor <br/>
+                La clase de salesforce 2022 es la mejor<br/>
+                Ultima linea
+            </apex:outputPanel>
+        </apex:pageBlock>
+        <apex:pageBlock >
+            <apex:outputLabel >
+            	Esto es un Label
+            </apex:outputLabel>
+            <apex:inputFile value="{!Inventario__c.Name}"/>
+            <apex:commandButton value="Presiona este boton"/>
+        </apex:pageBlock>
+    </apex:form>
+<style>
+ .miEstilo{
+    color:red;
+    font-size:18px;
+    font-family:courier;
+    float:left;
+    width:100%;    
+    }    
+</style>
+</apex:page>
