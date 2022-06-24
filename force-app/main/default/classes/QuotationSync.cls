@@ -1,5 +1,3 @@
-public class QuotationSync {
-    public QuotationSync() {
-
-    }
+public interface QuotationSync {
+    void MimetodoInterfaz(String codigoDeProducto);
 }

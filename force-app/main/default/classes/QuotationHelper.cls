@@ -1,7 +1,5 @@
 public class QuotationHelper {
-    public QuotationHelper() {
 
-    }
     public void initialConfig(){
         Account acct = new Account();
         acct.Name = 'CompuMundo II';
@@ -24,4 +22,20 @@ public class QuotationHelper {
         insert lst;
     }
 
+    public static List<String> productsInInventory(String nombre,String cantidadA,String cantidadD,String codP ){
+        List<String> inv = [SELECT Name, Cantidad_apartada__c,Cantidad_disponible__c,Codigo_de_Producto__c FROM Inventario__c WHERE Name=:nombre and Cantidad_apartada__c =:cantidadA AND Cantidad_disponible__c =:cantidadD AND Codigo_de_Producto__c =:codP LIMIT 10 ];
+        return inv;
+        /**for(integer i=0;i<n;i++)
+        {
+            //inv.add('Test '+i);
+            //System.debug(inv[i]);
+        }**/
+       // System.debug('Tus inventarios actuales son: '+inv.Name);
+    }
+
+    public class confirmProductExistByCode implements QuotationSync{
+        public void MimetodoInterfaz(String codigoPro){
+            System.debug('la existencia con este codigo'+codigoPro+ 'es');
+        }
+    }
 }
