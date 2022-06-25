@@ -32,7 +32,7 @@ public class myFirstapexClass {
          /**
           * myFirstapexClass test2 new myFirstapexClass
             String resultado = test2.metodo4('Hola Jorge Romero');
-            System.debug('El nombre es '+ressultado)
+            System.debug('El nombre es '+resultado)
           */
     }
 }

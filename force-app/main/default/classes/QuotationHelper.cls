@@ -22,9 +22,12 @@ public class QuotationHelper {
         insert lst;
     }
 
-    public static List<String> productsInInventory(String nombre,String cantidadA,String cantidadD,String codP ){
-        List<String> inv = [SELECT Name, Cantidad_apartada__c,Cantidad_disponible__c,Codigo_de_Producto__c FROM Inventario__c WHERE Name=:nombre and Cantidad_apartada__c =:cantidadA AND Cantidad_disponible__c =:cantidadD AND Codigo_de_Producto__c =:codP LIMIT 10 ];
-        return inv;
+    public List<Inventario__C> productsInInventory(){
+
+        return [ SELECT Name from Inventario__c LIMIT 10];
+
+        //List<String> inv = [SELECT Name, Cantidad_apartada__c,Cantidad_disponible__c,Codigo_de_Producto__c FROM Inventario__c WHERE Name=:nombre and Cantidad_apartada__c =:cantidadA AND Cantidad_disponible__c =:cantidadD AND Codigo_de_Producto__c =:codP LIMIT 10 ];
+        //return inv;
         /**for(integer i=0;i<n;i++)
         {
             //inv.add('Test '+i);
@@ -36,6 +39,24 @@ public class QuotationHelper {
     public class confirmProductExistByCode implements QuotationSync{
         public void MimetodoInterfaz(String codigoPro){
             System.debug('la existencia con este codigo'+codigoPro+ 'es');
+        }
+
+        bollean confirmProductExistByCode(String codigoDeProducto){
+            if( null == [SELECT ExternalId from Product2 where ProductCode =:codigoDeProducto ]){
+            return false;
+        }else{
+            return true;
+            }
+        }
+
+
+
+        integer searchProductByCode(String codigoDeProducto){
+            if(null != [ SELECT Cantidad_disponible__c from Inventario__c WHERE Codigo_de_Producto__c =:codigoDeProducto]){
+                return [SELECT Cantidad_disponible__c FROM Inventario__c WHERE Codigo_de_Producto__c =:codigoDeProducto].size();
+            }else{
+                return 0;
+            }
         }
     }
 }
